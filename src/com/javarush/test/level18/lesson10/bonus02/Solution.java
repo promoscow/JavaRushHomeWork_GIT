@@ -22,7 +22,50 @@ id productName price quantity
 19847983Куртка для сноубордистов, разм10173.991234
 */
 
+import java.io.*;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class Solution {
     public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String fname = reader.readLine();
+        if (args.length > 0)
+            if (args[0].equals("-c"))
+                add(args, fname);
+        reader.close();
+    }
+    public static int getLastId(String fname) throws FileNotFoundException {
+        Scanner file = new Scanner(new File(fname));
+        int maxId = Integer.MIN_VALUE;
+        while (file.hasNextLine())
+        {
+            String line = file.nextLine();
+            int id = Integer.parseInt(line.substring(0, 8).trim());
+            if (id > maxId)
+                maxId = id;
+        }
+        file.close();
+        return maxId;
+    }
+    public static void add(String[] args, String fname) throws IOException {
+        if (args.length < 4)
+            return;
+        FileWriter file = new FileWriter(fname, true);
+        String id = String.format("%-8.8s", getLastId(fname) + 1);
+        String productName = String.format("%-30.30s", getProductNameInArgs(args));
+        String price = String.format("%-8.8s", String.format(Locale.US, "%.2f", Double.parseDouble(args[args.length-2])));
+        String quantity = String.format("%-4.4s", args[args.length-1]);
+        file.write(System.getProperty( "line.separator" ));
+        file.write(id + productName + price + quantity);
+        file.close();
+    }
+    public static String getProductNameInArgs(String[] args) {
+        StringBuilder productName = new StringBuilder();
+        for (int i = 1; i < args.length - 2; i++) {
+            productName.append(args[i]);
+            productName.append(" ");
+        }
+        return productName.toString();
     }
 }
