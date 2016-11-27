@@ -54,6 +54,7 @@ public class Solution {
     }
 
     private static String lineCheck(String line) {
+        /*
         char[] ch = line.toCharArray();
         System.out.println("строка: " + line);
         for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -75,6 +76,11 @@ public class Solution {
                 }
             }
         }
+        */
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            line = line.replaceAll(("\\s" + entry.getKey() + "\\s"), (" "+entry.getValue()+" "));
+        }
+
         return line;
     }
 }
