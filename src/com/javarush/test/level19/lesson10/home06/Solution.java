@@ -78,7 +78,7 @@ public class Solution {
         }
         */
         for (Map.Entry<String, String> entry : map.entrySet()) {
-            line = line.replaceAll(("\\s" + entry.getKey() + "\\s"), (" "+entry.getValue()+" "));
+            line = line.replaceAll(("\\s*" + entry.getKey() + "\\s"), (" " + entry.getValue() + " "));
         }
 
         return line;
