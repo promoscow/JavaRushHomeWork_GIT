@@ -54,12 +54,27 @@ public class Solution {
     }
 
     private static String lineCheck(String line) {
+        char[] ch = line.toCharArray();
+        System.out.println("строка: " + line);
         for (Map.Entry<String, String> entry : map.entrySet()) {
-//            System.out.printf("%s / %s : %s%n", entry.getKey(), entry.getValue(), line);
-//            System.out.println("changed: " + line.replaceAll(entry.getKey(), entry.getValue()));
-            line = line.replaceAll((entry.getKey()), entry.getValue());
+            //line = line.replaceAll((entry.getKey()), entry.getValue());
+            for (int i = 0; i < ch.length; i++) {    //бежим по символам строки
+                if (entry.getKey().equals(String.valueOf(ch[i]))) {    //если совпало, строим число
+                    StringBuilder builder = new StringBuilder();
+                    while(true) {
+                        if (Character.isDigit(ch[i])) {
+                            builder.append(String.valueOf(ch[i]));
+                            i++;
+                        }
+                        else break;
+                    }
+                    String line1 = builder.toString();    //получаем число
+                    System.out.println("тест: " + line1);
+                    line = line.replaceAll((line1), entry.getValue());
+                    System.out.println("замена: " + line1 + " : " + entry.getValue());
+                }
+            }
         }
-//        System.out.println("final: " + line);
         return line;
     }
 }

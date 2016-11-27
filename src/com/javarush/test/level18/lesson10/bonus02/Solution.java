@@ -24,9 +24,6 @@ id productName price quantity
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        int a = 1;
-        int b = a++;
-        System.out.println(b++);
-        System.out.println(++b);
+
     }
 }
