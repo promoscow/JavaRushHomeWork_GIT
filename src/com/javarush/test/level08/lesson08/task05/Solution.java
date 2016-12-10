@@ -27,18 +27,14 @@ public class Solution
     public static void removeTheFirstNameDuplicates(HashMap<String, String> map)
     {
         HashMap<String, String> copy = new HashMap<String, String>(map);
-        for (Map.Entry<String,String> element :copy.entrySet())
-        {
+        for (Map.Entry<String,String> element :copy.entrySet()) {
             int count = 0;
-            for (Map.Entry<String, String> copyElement : copy.entrySet())
-            {
-                if (element.getValue().equals(copyElement.getValue()))
-                {
+            for (Map.Entry<String, String> copyElement : copy.entrySet()) {
+                if (element.getValue().equals(copyElement.getValue())) {
                     count++;
                 }
             }
-            if (count > 1)
-            {
+            if (count > 1) {
                 removeItemFromMapByValue(map, element.getValue());
             }
             //Напишите тут ваш код
