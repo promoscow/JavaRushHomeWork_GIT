@@ -8,8 +8,7 @@ public class Cat
 {
     public static int catCount = 0;
 
-    public Cat()
-    {
+    public Cat() {
         this.catCount = catCount + 1;
     }
 

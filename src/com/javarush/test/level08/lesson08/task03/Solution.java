@@ -8,11 +8,9 @@ import java.util.Map;
 Проверить сколько людей имеют совпадающие с заданным имя или фамилию.
 */
 
-public class Solution
-{
+public class Solution {
 
-    public static HashMap<String, String> createMap()
-    {
+    public static HashMap<String, String> createMap() {
         //напишите тут ваш код
         HashMap<String, String> map = new HashMap<String, String>();
         {
@@ -31,29 +29,23 @@ public class Solution
 
     }
 
-    public static int getCountTheSameFirstName(HashMap<String, String> map, String name)
-    {
+    public static int getCountTheSameFirstName(HashMap<String, String> map, String name) {
         //напишите тут ваш код
         int x = 0;
-        for (Map.Entry<String, String> pair : map.entrySet())
-        {
+        for (Map.Entry<String, String> pair : map.entrySet()) {
             if (pair.getValue().equals(name))
-                x = x + 1;
+                x++;
         }
-
         return x;
     }
 
-    public static int getCountTheSameLastName(HashMap<String, String> map, String lastName)
-    {
+    public static int getCountTheSameLastName(HashMap<String, String> map, String lastName) {
 
         int x = 0;
-        for (Map.Entry<String, String> pair2 : map.entrySet())
-        {
+        for (Map.Entry<String, String> pair2 : map.entrySet()) {
             if (pair2.getKey().equals(lastName))
-                x = x + 1;
+                x++;
         }
-
         return x;
 
     }
