@@ -43,14 +43,20 @@ public class Solution {
         String line;
         boolean firstLine = true;
         while ((line = reader.readLine()) != null) {
-            if (!firstLine) writer.println();
-            else firstLine = false;
             StringTokenizer stringTokenizer = new StringTokenizer(line, " ");
             String id = stringTokenizer.nextToken();
-            if (!id.equals(args[1])) writer.print(line);
-            else {
-                if (args[0].equals("-u")) line = update(args);
+            if (!id.equals(args[1])) {
+                if (!firstLine) writer.println();
+                else firstLine = false;
                 writer.print(line);
+            }
+            else {
+                if (args[0].equals("-u")) {
+                    line = update(args);
+                    if (!firstLine) writer.println();
+                    else firstLine = false;
+                    writer.print(line);
+                }
             }
         }
         File file = new File(fileName);    //переименование файла — начало кода
