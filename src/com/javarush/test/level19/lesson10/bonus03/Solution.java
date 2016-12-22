@@ -27,6 +27,7 @@ text1, text2 могут быть пустыми
 */
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Solution {
@@ -34,37 +35,11 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         String fileName = scanner.nextLine();
         BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)));
-        String line;
-        char[] args1 = args[0].toCharArray();
-        while ((line = reader.readLine()) != null) {
-//            boolean isOpened = false;
-            char[] ch = line.toCharArray();
-            int xRight = 0;
-            int toLeft = ch.length - 1;
-            for (int i = 0; i < ch.length; i++) {    //глобальный цикл по строке
-                int xLeft = 0;
-                for (int j = 0; j < args1.length; j++) {    //локальный цикл поиска совпадения
-                    if (args1[j] == ch[i + j]) xLeft++;
-                }
-                    if (xLeft == args1.length) {
-                        while (true) {
-                            for (int j = args1.length - 1; j > 0; j--) {
-                                if (args1[j] == ch[toLeft - args.length + 1 + j]) xRight++;
-                            }
-                            if (xRight == args1.length) {
-                                xRight = 0;
-                                System.out.print(ch[i - 1]);
-                                for (int j = i; j < toLeft; j++) {
-                                    System.out.print(ch[j]);
-                                }
-                                System.out.println(ch[toLeft + 1]);
-                                toLeft -= args1.length;
-                                break;
-                            }
-                            toLeft--;
-                        }
-                    }
-                }
-            }
+        ArrayList<Character> chars = new ArrayList<>();
+        int symbol;
+        while ((symbol = reader.read()) != -1) {
+            chars.add((char) symbol);
         }
+        chars.forEach(System.out::print);
     }
+}
