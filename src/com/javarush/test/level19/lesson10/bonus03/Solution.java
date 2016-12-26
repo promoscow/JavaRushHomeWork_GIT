@@ -41,5 +41,10 @@ public class Solution {
             chars.add((char) symbol);
         }
         chars.forEach(System.out::print);
+
+        char[] tagChar = args[0].toCharArray();
+        for (int i = 0; i < chars.size(); i++) {
+            //TODO идея такая. пробегаем по каждому символу всего массива. если находим тэг, бежим по массиву с другого конца. находим закрывающий тэг — выводим всё, что между ними (тэги всегда парами)
+        }
     }
 }

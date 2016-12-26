@@ -17,7 +17,7 @@ public class Solution {
         //вы можете найти your_file_name.tmp в папке TMP или исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
 
-            File your_file_name = File.createTempFile("your_file_name", null);
+            File your_file_name = File.createTempFile("crud", null);
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -28,6 +28,8 @@ public class Solution {
             Human somePerson = new Human();
             somePerson.load(inputStream);
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
+            String isEqual = (somePerson.equals(ivanov)) ? "is equal" : "is not equal";
+            System.out.println(isEqual);
             inputStream.close();
 
         } catch (IOException e) {
@@ -55,11 +57,29 @@ public class Solution {
         }
 
         public void save(OutputStream outputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            PrintWriter pw = new PrintWriter(outputStream);
+            pw.println(name);
+            pw.println(assets.size());
+            for (Asset as : assets)
+            {
+                pw.println(as.getName());
+                pw.println(as.getPrice());
+            }
+            pw.flush();
         }
 
         public void load(InputStream inputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            name = br.readLine();
+            int asSize = Integer.parseInt(br.readLine());
+            for (int i = 0; i < asSize; i++)
+            {
+                String asName = br.readLine();
+                String asPrice = br.readLine();
+                assets.add(new Asset(asName));
+                assets.get(assets.size()-1).setPrice(Double.parseDouble(asPrice));
+            }
+            br.close();
         }
     }
 }
