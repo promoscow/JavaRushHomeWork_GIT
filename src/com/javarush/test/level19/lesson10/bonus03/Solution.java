@@ -40,11 +40,38 @@ public class Solution {
         while ((symbol = reader.read()) != -1) {
             chars.add((char) symbol);
         }
-        chars.forEach(System.out::print);
 
         char[] tagChar = args[0].toCharArray();
-        for (int i = 0; i < chars.size(); i++) {
-            //TODO идея такая. пробегаем по каждому символу всего массива. если находим тэг, бежим по массиву с другого конца. находим закрывающий тэг — выводим всё, что между ними (тэги всегда парами)
+        int x = 0;    //x служит триггером для вывода. если нашли span, то x++, если нашли /span, то x--. Если при этом x == 0, то вывод, если при этом x != 0, то x--;
+        int pointer = 0;
+        for (int i = 0; i < chars.size(); i++) {    // главный цикл
+//            System.out.print(chars.get(i) + "!");
+            if (chars.get(i) == tagChar[0]) {    // нашли нужный символ
+                int comparison = 1;
+                for (int j = 1; j < tagChar.length; j++) {
+                    if (chars.get(i + j) == tagChar[j]) comparison++;
+                }
+                if (comparison == tagChar.length) {    // нашли тэг
+                    if (chars.get(i - 1) == '<') {    // если тэг открывающий
+                        if (x == 0) pointer = i;    // если тэг первый и открывающий, то ставим точку
+                        x++;
+                    }
+                    if (chars.get(i - 1) == '/' && (x != 0)) {
+                        x--;
+                        if (x == 0) {    // если уровень совпадает
+                            for (int j = pointer - 1; j < i + tagChar.length + 1; j++) {
+                                if (chars.get(j) != 10) {
+                                    System.out.print(chars.get(j));
+                                }
+                            }
+                            System.out.println();
+                            i = pointer + tagChar.length;
+                        }
+                    }
+                }
+            }
         }
+        scanner.close();
+        reader.close();
     }
 }
