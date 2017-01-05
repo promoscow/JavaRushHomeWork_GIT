@@ -61,9 +61,10 @@ public class Solution {
         }
         File file = new File(fileName);    //переименование файла — начало кода
         File tempFile = new File(fileName + "_temp.txt");
-        tempFile.renameTo(file);    //переименование файла - конец кода
+        boolean bool = tempFile.renameTo(file);    //переименование файла - конец кода
         reader.close();
         writer.close();
+        System.out.println(bool);
     }
 
     private static String update(String[] args) {

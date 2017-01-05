@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /* Замена чисел
 1. В статическом блоке инициализировать словарь map парами [число-слово] от 0 до 12 включительно
@@ -26,61 +26,47 @@ import java.util.Scanner;
 */
 
 public class Solution {
-    public static Map<String, String> map = new HashMap<>();
+    public static Map<Integer, String> map = new HashMap<Integer, String>();
 
     static {
-        map.put("0", "ноль");
-        map.put("1", "один");
-        map.put("2", "два");
-        map.put("3", "три");
-        map.put("4", "четыре");
-        map.put("5", "пять");
-        map.put("6", "шесть");
-        map.put("7", "семь");
-        map.put("8", "восемь");
-        map.put("9", "девять");
-        map.put("10", "десять");
-        map.put("11", "одиннадцать");
-        map.put("12", "двенадцать");
+        map.put(0, "ноль");
+        map.put(1, "один");
+        map.put(2, "два");
+        map.put(3, "три");
+        map.put(4, "четыре");
+        map.put(5, "пять");
+        map.put(6, "шесть");
+        map.put(7, "семь");
+        map.put(8, "восемь");
+        map.put(9, "девять");
+        map.put(10, "десять");
+        map.put(11, "одиннадцать");
+        map.put(12, "двенадцать");
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(scanner.nextLine()), StandardCharsets.UTF_8));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = reader.readLine();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
         String line;
-        while ((line = bufferedReader.readLine()) != null) System.out.println(lineCheck(line));
-        scanner.close();
+        while((line = bufferedReader.readLine()) != null) System.out.println(replace(line));
+        reader.close();
         bufferedReader.close();
     }
 
-    private static String lineCheck(String line) {
-        /*
-        char[] ch = line.toCharArray();
-        System.out.println("строка: " + line);
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            //line = line.replaceAll((entry.getKey()), entry.getValue());
-            for (int i = 0; i < ch.length; i++) {    //бежим по символам строки
-                if (entry.getKey().equals(String.valueOf(ch[i]))) {    //если совпало, строим число
-                    StringBuilder builder = new StringBuilder();
-                    while(true) {
-                        if (Character.isDigit(ch[i])) {
-                            builder.append(String.valueOf(ch[i]));
-                            i++;
-                        }
-                        else break;
-                    }
-                    String line1 = builder.toString();    //получаем число
-                    System.out.println("тест: " + line1);
-                    line = line.replaceAll((line1), entry.getValue());
-                    System.out.println("замена: " + line1 + " : " + entry.getValue());
-                }
+    private static String replace(String line) {
+        StringBuilder builder = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(line, " ");
+        while(st.hasMoreTokens()) {
+            String line1 = st.nextToken();
+            try {
+                int x = Integer.parseInt(line1);
+                for (Map.Entry<Integer, String> entry : map.entrySet()) if (x == entry.getKey()) line1 = entry.getValue();
+            } catch (NumberFormatException e) {
             }
+            builder.append(line1);
+            builder.append(" ");
         }
-        */
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            line = line.replaceAll(("\\s*" + entry.getKey() + "\\s"), (" " + entry.getValue() + " "));
-        }
-
-        return line;
+        return builder.toString().trim();
     }
 }
