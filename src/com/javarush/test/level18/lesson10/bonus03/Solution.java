@@ -25,63 +25,114 @@ id productName price quantity
 */
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        String fileName = scanner.nextLine();
-        if (args.length > 0) process(args, fileName);
-        scanner.close();
+        BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = rd.readLine();
+        rd.close();
+        if ("-u".equals(args[0])){
+            update(fileName,args[1],args[2],args[3],args[4]);
+        } else if ("-d".equals(args[0])){
+            delete(fileName,args[1]);
+        }
     }
 
-    private static void process(String[] args, String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)));
-        PrintWriter writer = new PrintWriter(new FileWriter(fileName + "_temp.txt"));
-        String line;
-        boolean firstLine = true;
-        while ((line = reader.readLine()) != null) {
-            StringTokenizer stringTokenizer = new StringTokenizer(line, " ");
-            String id = stringTokenizer.nextToken();
-            if (!id.equals(args[1])) {
-                if (!firstLine) writer.println();
-                else firstLine = false;
-                writer.print(line);
+    public static void update(String fileName, String id, String productName, String price, String quantity){
+        try {
+            BufferedReader rd = new BufferedReader(new FileReader(fileName));
+            ArrayList<String> list = new ArrayList<>();
+            while (rd.ready()){
+                list.add(rd.readLine());
             }
-            else {
-                if (args[0].equals("-u")) {
-                    line = update(args);
-                    if (!firstLine) writer.println();
-                    else firstLine = false;
-                    writer.print(line);
+            rd.close();
+            if (id.contains(" "))
+                id = id.substring(0,id.indexOf(" "));
+
+            for (int i = 0; i < list.size(); i++) {
+                String outId = list.get(i).substring(0,8);
+                if (outId.contains(" "))
+                    outId = outId.substring(0,outId.indexOf(" "));
+
+                if (outId.equals(id)){
+                    if (productName.length()>30)
+                        productName = productName.substring(0,30);
+                    if (price.length()>8)
+                        price = price.substring(0,8);
+                    if (quantity.length()>4)
+                        quantity = quantity.substring(0,4);
+                    while (outId.length()<8){
+                        outId+=" ";
+                    }
+                    while (productName.length()<30){
+                        productName+=" ";
+                    }
+                    while (price.length()<8){
+                        price+=" ";
+                    }
+                    while (quantity.length()<4){
+                        quantity+=" ";
+                    }
+                    list.set(i,outId+productName+price+quantity);
+                    break;
                 }
             }
-        }
-        File file = new File(fileName);    //переименование файла — начало кода
-        File tempFile = new File(fileName + "_temp.txt");
-        boolean bool = tempFile.renameTo(file);    //переименование файла - конец кода
-        reader.close();
-        writer.close();
-        System.out.println(bool);
+            FileOutputStream stream = new FileOutputStream(fileName);
+            for (int i = 0; i < list.size(); i++) {
+                if (i<list.size()-1){
+                    stream.write((list.get(i)).getBytes());
+                    stream.write('\n');
+                }
+                else {
+                    stream.write(list.get(i).getBytes());
+                }
+            }
+            stream.flush();
+            stream.close();
+
+        } catch (FileNotFoundException e){
+        } catch (IOException e){}
     }
 
-    private static String update(String[] args) {
-        String id = String.format("%1$-8.8s", args[1]);
-        String productName = String.format("%1$-30.30s", createProductName(args));
-        String price = String.format("%-8.8s", String.format(Locale.US, "%.2f", Double.parseDouble(args[args.length - 2])));
-        String quantity = String.format("%-4.4s", Integer.parseInt(args[args.length - 1]));
-        String line = id + productName + price + quantity;
-        return line;
-    }
+    public static void delete(String fileName, String id){
+        try {
+            BufferedReader rd = new BufferedReader(new FileReader(fileName));
+            ArrayList<String> list = new ArrayList<>();
+            while (rd.ready()){
+                list.add(rd.readLine());
+            }
+            rd.close();
+            if (id.contains(" "))
+                id = id.substring(0,id.indexOf(" "));
 
-    private static String createProductName(String[] args) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 2; i < args.length - 2; i++) {
-            builder.append(args[i]);
-            builder.append(" ");
-        }
-        return builder.toString();
+            for (int i = 0; i < list.size(); i++) {
+                String outId = list.get(i).substring(0,8);
+                if (outId.contains(" "))
+                    outId = outId.substring(0,outId.indexOf(" "));
+
+                if (outId.equals(id)){
+                    list.remove(i);
+                    break;
+                }
+            }
+            FileOutputStream stream = new FileOutputStream(fileName);
+            for (int i = 0; i < list.size(); i++) {
+                if (i<list.size()-1){
+                    stream.write((list.get(i)).getBytes());
+                    stream.write('\n');
+                }
+                else {
+                    stream.write(list.get(i).getBytes());
+                }
+            }
+            stream.flush();
+            stream.close();
+
+        } catch (FileNotFoundException e){
+        } catch (IOException e){}
     }
 }

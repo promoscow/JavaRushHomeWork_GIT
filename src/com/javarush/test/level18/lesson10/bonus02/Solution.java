@@ -65,109 +65,43 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        String fileName = scanner.nextLine();
-        if (args.length > 0) {
-            if (args[0].equals("-c")) add(args, fileName);
-        }
-        scanner.close();
-    }
+        BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = rd.readLine();
+        rd.close();
 
-    private static void add(String[] args, String fileName) throws IOException {
-        File file = new File(fileName);
-        String id = (file.exists()) ? (String.format("%1$-8.8s", createId(fileName))) : (String.format("%1$-8.8s", 1));    //1
-        boolean haveLines = (file.exists());
-        String productName = createProductName(args);
-        String price = String.format("%-8.8s", String.format(Locale.US, "%.2f", Double.parseDouble(args[args.length - 2])));
-        String quantity = String.format("%-4.4s", Integer.parseInt(args[args.length - 1]));
-        FileWriter fileWriter = new FileWriter(fileName, haveLines);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-        if (!haveLineSeparator(fileName) && reader.readLine() != null) {
-            fileWriter.write(System.getProperty("line.separator"));
-        }
-        fileWriter.write(id + productName + price + quantity);
-        fileWriter.close();
-        reader.close();
-    }
-
-    private static boolean haveLineSeparator(String fileName) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(fileName));
-        if (scanner.hasNextLine()) {
-            do {
-                String line = scanner.nextLine();
-                if (!scanner.hasNextLine()) {
-                    return (line.substring(1).equals(""));
-                }
+        if ("-c".equals(args[0])){
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String id = reader.readLine();
+            while (reader.ready()){
+                id = reader.readLine();
             }
-            while (scanner.hasNextLine());
-        }
-        scanner.close();
-        return false;
-    }
+            reader.close();
 
-    private static String createProductName(String[] args) {
-        char[] ch = new char[30];
-        int x = 0;
-        for (int i = 0; i < args.length - 2; i++) {
-            char[] chTemp = args[i].toCharArray();
-            for (char aChTemp : chTemp) {
-                ch[i] = aChTemp;
-                x++;
+            id = id.substring(0,id.indexOf(" ")>=0 && id.indexOf(" ")<=7 ?id.indexOf(" "):8);
+            int idInc = Integer.parseInt(id)+1;
+            String productName = args[1];
+            String price = args[2];
+            String quantity = args[3];
+            if (productName.length()>30)
+                productName = productName.substring(0,30);
+            if (price.length()>8)
+                price = price.substring(0,8);
+            if (quantity.length()>4)
+                quantity = quantity.substring(0,4);
+            while (productName.length()<30){
+                productName+=" ";
             }
-            if (x == 30) break;
-        }
-        if (x < 30) {
-            for (int i = x; i < 30; i++) {
-                ch[i] = ' ';
+            while (price.length()<8){
+                price+=" ";
             }
+            while (quantity.length()<4){
+                quantity+=" ";
+            }
+            String outputString = String.valueOf(idInc)+productName+price+quantity;
+            FileOutputStream outputStream = new FileOutputStream(fileName,true);
+            outputStream.write(outputString.getBytes());
+            outputStream.flush();
+            outputStream.close();
         }
-        System.out.println(ch.length);
-        for (char c : ch) {
-            System.out.print(c);
-        }
-        String output = new String(ch);
-        System.out.println();
-        System.out.println("output length: " + output.length());
-        System.out.println(output);
-        byte[] bytes = output.getBytes();
-        System.out.println("bytes length: " + bytes.length);
-        return output;
-
-
-
-//        StringBuilder builder = new StringBuilder();
-//        for (int i = 1; i < args.length - 2; i++) {
-//            builder.append(args[i]);
-//            builder.append(" ");
-//        }
-//        if (builder.toString().length() < 30) {
-//            for (int i = 0; i < 30 - builder.toString().length(); i++) {
-//                builder.append(" ");
-//            }
-//        }
-//        byte[] bytes = builder.toString().getBytes();
-//        char[] ch = builder.toString().toCharArray();
-//        System.out.println(bytes.length);
-//        System.out.println(ch.length);
-//        byte[] bytes60 = new byte[60];
-//        System.arraycopy(bytes, 0, bytes60, 0, 60);
-//        System.out.println(bytes60.length);
-//        String st = new String(bytes60);
-//        char[] ch2 = st.toCharArray();
-//        System.out.println(ch2.length);
-//        for (byte b : bytes60) System.out.print(b + " ");
-//        System.out.println(st);
-//        return st;
-    }
-
-    private static String createId(String fileName) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(fileName));
-        int maxId = 0;
-        while (scanner.hasNextLine()) {
-            int id = Integer.parseInt(scanner.nextLine().substring(0, 8).trim());    //2
-            if (id > maxId) maxId = id;
-        }
-        scanner.close();
-        return String.valueOf(++maxId);
     }
 }
