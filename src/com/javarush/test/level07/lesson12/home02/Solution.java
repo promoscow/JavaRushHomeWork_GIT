@@ -12,23 +12,19 @@ import java.util.ArrayList;
 Вывести список на экран, каждое значение с новой строки.
 */
 
-public class Solution
-{
-    public static void main(String[] args) throws IOException
-    {
+public class Solution {
+    public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         ArrayList<Integer> list = new ArrayList<>();
         int n = Integer.parseInt(reader.readLine());
         int m = Integer.parseInt(reader.readLine());
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             list.add(i, Integer.parseInt(reader.readLine()));
         }
 
-        for (int i = 0; i < m; i++)
-        {
+        for (int i = 0; i < m; i++) {
             list.add(list.size(), list.get(0));
             list.remove(0);
         }
