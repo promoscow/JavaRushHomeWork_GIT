@@ -34,7 +34,7 @@ public class ConsoleHelper {
 
     public static String askCurrencyCode() throws NotEnoughMoneyException, InterruptOperationException {
         writeMessage("ВВЕДИТЕ КОД ВАЛЮТЫ:");
-        String currencyCode;
+        String currencyCode = "";
         while (true) {
             currencyCode = readString();
             if (isCorrectCurrency(currencyCode)) break;
@@ -51,7 +51,7 @@ public class ConsoleHelper {
 
     public static String[] getValidTwoDigits() throws NotEnoughMoneyException, InterruptOperationException {
         writeMessage("ВВЕДИТЕ НОМИНАЛ И КОЛИЧЕСТВО БАНКНОТ (ЧЕРЕЗ ПРОБЕЛ):");
-        String enter;
+        String enter = "";
         while (true) {
             enter = readString();
             if (enter.matches("\\d+ \\d+")) break;
@@ -61,15 +61,17 @@ public class ConsoleHelper {
     }
 
     public static Operation askOperation() throws NotEnoughMoneyException, InterruptOperationException {
-        writeMessage("ВВЕДИТЕ КОД ОПЕРАЦИИ.");
-        writeMessage("| INFO - 1 | DEPOSIT — 2 | WITHDRAW - 3 | EXIT - 4 |");
         Operation operation = null;
-        try {
-            operation = Operation.getAllowableOperationByOrdinal(Integer.valueOf(readString()));
-        } catch (Exception e) {
-            writeMessage("ДАННЫЕ НЕ ВЕРНЫ. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
+        while (true) {
+            writeMessage("ВВЕДИТЕ КОД ОПЕРАЦИИ.");
+            writeMessage("| INFO - 1 | DEPOSIT — 2 | WITHDRAW - 3 | EXIT - 4 |");
+            try {
+                operation = Operation.getAllowableOperationByOrdinal(Integer.valueOf(readString()));
+                break;
+            } catch (Exception e) {
+                writeMessage("ДАННЫЕ НЕ ВЕРНЫ. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
+            }
         }
-
         return operation;
     }
 }

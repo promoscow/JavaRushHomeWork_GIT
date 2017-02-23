@@ -12,7 +12,7 @@ import java.util.Locale;
 public class CashMachine {
     public static void main(String[] args) throws InterruptOperationException, NotEnoughMoneyException {
         Locale.setDefault(Locale.ENGLISH);
-        Operation operation;
+        Operation operation = null;
         do {
             operation = ConsoleHelper.askOperation();
             CommandExecutor.execute(operation);

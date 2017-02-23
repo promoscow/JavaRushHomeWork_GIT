@@ -1,9 +1,5 @@
 package com.javarush.test.level26.lesson15.big01;
 
-import com.javarush.test.level20.lesson02.task05.Solution;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +7,8 @@ import java.util.Map;
  * Created by promoscow on 20.02.17.
  */
 public class CurrencyManipulator {
-    public Map<Integer, Integer> denominations = new HashMap<>();
-    private String currencyCode;
+    public Map<Integer, Integer> denominations = new HashMap<Integer, Integer>();
+    private String currencyCode = "";
 
     public CurrencyManipulator(String currencyCode) {
         this.currencyCode = currencyCode;
