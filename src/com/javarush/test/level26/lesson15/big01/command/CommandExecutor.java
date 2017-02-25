@@ -13,14 +13,14 @@ import java.util.Map;
 public final class CommandExecutor {
     private static Map<Operation, Command> commands = new HashMap<>();
 
-    private CommandExecutor() {
-    }
-
     static {
         commands.put(Operation.DEPOSIT, new DepositCommand());
         commands.put(Operation.EXIT, new ExitCommand());
         commands.put(Operation.INFO, new InfoCommand());
         commands.put(Operation.WITHDRAW, new WithdrawCommand());
+    }
+
+    private CommandExecutor() {
     }
 
     public static final void execute(Operation operation) throws NotEnoughMoneyException, InterruptOperationException {

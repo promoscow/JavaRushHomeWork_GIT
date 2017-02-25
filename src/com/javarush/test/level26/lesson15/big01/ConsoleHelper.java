@@ -6,9 +6,6 @@ import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyExceptio
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by promoscow on 20.02.17.
@@ -29,6 +26,7 @@ public class ConsoleHelper {
         } catch (IOException e) {
 
         }
+        if (("EXIT").equals(s.toUpperCase())) throw new InterruptOperationException();
         return s;
     }
 
@@ -37,16 +35,10 @@ public class ConsoleHelper {
         String currencyCode = "";
         while (true) {
             currencyCode = readString();
-            if (isCorrectCurrency(currencyCode)) break;
+            if (currencyCode.matches("^[a-zA-Z]{3}$")) break;
             writeMessage("КОД ВАЛЮТЫ МОЖЕТ СОДЕРЖАТЬ 3 СИМВОЛА АНГЛИЙСКОГО АЛФАВИТА. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
         }
         return currencyCode.toUpperCase();
-    }
-
-    private static boolean isCorrectCurrency(String newNickname) {
-        Pattern p = Pattern.compile("^[a-zA-Z]{3}$");
-        Matcher m = p.matcher(newNickname);
-        return m.matches();
     }
 
     public static String[] getValidTwoDigits() throws NotEnoughMoneyException, InterruptOperationException {
