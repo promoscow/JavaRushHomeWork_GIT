@@ -18,19 +18,23 @@ public class ConsoleHelper {
         System.out.println(message);
     }
 
-    public static String readString() throws InterruptOperationException, NotEnoughMoneyException {
+    public static String readString() throws InterruptOperationException {
 
-        String s = "";
+        String s = null;
         try {
             s = reader.readLine();
+            if (s.toLowerCase().equals("exit")) {
+                writeMessage("ВСЕГО ХОРОШЕГО!");
+                throw new InterruptOperationException();
+            }
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
-        if (("EXIT").equals(s.toUpperCase())) throw new InterruptOperationException();
+
         return s;
     }
 
-    public static String askCurrencyCode() throws NotEnoughMoneyException, InterruptOperationException {
+    public static String askCurrencyCode() throws InterruptOperationException {
         writeMessage("ВВЕДИТЕ КОД ВАЛЮТЫ:");
         String currencyCode = "";
         while (true) {
@@ -41,7 +45,7 @@ public class ConsoleHelper {
         return currencyCode.toUpperCase();
     }
 
-    public static String[] getValidTwoDigits() throws NotEnoughMoneyException, InterruptOperationException {
+    public static String[] getValidTwoDigits() throws InterruptOperationException {
         writeMessage("ВВЕДИТЕ НОМИНАЛ И КОЛИЧЕСТВО БАНКНОТ (ЧЕРЕЗ ПРОБЕЛ):");
         String enter = "";
         while (true) {
@@ -52,7 +56,7 @@ public class ConsoleHelper {
         return enter.split(" ");
     }
 
-    public static Operation askOperation() throws NotEnoughMoneyException, InterruptOperationException {
+    public static Operation askOperation() throws InterruptOperationException {
         Operation operation = null;
         while (true) {
             writeMessage("ВВЕДИТЕ КОД ОПЕРАЦИИ.");

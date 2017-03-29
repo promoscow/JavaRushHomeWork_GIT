@@ -11,7 +11,7 @@ import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyExceptio
  */
 class DepositCommand implements Command {
     @Override
-    public void execute() throws InterruptOperationException, NotEnoughMoneyException {
+    public void execute() throws InterruptOperationException {
 
         String currencyCode = ConsoleHelper.askCurrencyCode();
         CurrencyManipulator manipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode);

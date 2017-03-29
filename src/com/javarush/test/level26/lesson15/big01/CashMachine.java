@@ -10,16 +10,16 @@ import java.util.Locale;
  * Created by promoscow on 20.02.17.
  */
 public class CashMachine {
-    public static void main(String[] args) throws NotEnoughMoneyException {
+    public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
-        try {
             Operation operation = null;
-            while (true) {
+        try {
+            do {
                 operation = ConsoleHelper.askOperation();
                 CommandExecutor.execute(operation);
-            }
+            } while (operation != Operation.EXIT);
         } catch (InterruptOperationException e) {
-            ConsoleHelper.writeMessage("ВСЕГО ХОРОШЕГО!");
+            ConsoleHelper.writeMessage("ВСЕГО ХОРОШЕГО.");
         }
     }
 }

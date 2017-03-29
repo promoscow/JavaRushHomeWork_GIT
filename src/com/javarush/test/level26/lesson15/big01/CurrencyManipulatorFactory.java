@@ -1,8 +1,8 @@
 package com.javarush.test.level26.lesson15.big01;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+        import java.util.Collection;
+        import java.util.HashMap;
+        import java.util.Map;
 
 /**
  * Created by promoscow on 20.02.17.
@@ -26,7 +26,7 @@ public final class CurrencyManipulatorFactory {
     }
 
 
-    public static Collection<CurrencyManipulator> getAllCurrencyManipulators() {
+    public static Collection<CurrencyManipulator> getAllCurrencyManipulators () {
         return manipulators.values();
     }
 }

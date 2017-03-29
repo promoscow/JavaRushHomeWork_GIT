@@ -23,7 +23,7 @@ public final class CommandExecutor {
     private CommandExecutor() {
     }
 
-    public static final void execute(Operation operation) throws NotEnoughMoneyException, InterruptOperationException {
+    public static final void execute(Operation operation) throws InterruptOperationException {
         if (commands.containsKey(operation)) {
             commands.get(operation).execute();
         }

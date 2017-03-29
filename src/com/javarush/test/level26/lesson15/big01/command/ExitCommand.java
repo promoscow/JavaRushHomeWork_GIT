@@ -9,10 +9,10 @@ import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyExceptio
  */
 class ExitCommand implements Command {
     @Override
-    public void execute() throws NotEnoughMoneyException, InterruptOperationException {
-        String exit = "";
+    public void execute() throws InterruptOperationException {
         ConsoleHelper.writeMessage("ВЫ ДЕЙСТВИТЕЛЬНО ХОТИТЕ ВЫЙТИ? (Y / N)");
-        exit = ConsoleHelper.readString();
-        if (exit.toLowerCase().equals("y")) throw new InterruptOperationException();
+        String answer = ConsoleHelper.readString().toLowerCase();
+        if (answer.equals("y")) ConsoleHelper.writeMessage("УДАЧИ!");
+        else if (answer.equals("n")) {}
     }
 }

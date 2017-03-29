@@ -7,5 +7,5 @@ import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyExceptio
  * Created by promoscow on 21.02.17.
  */
 interface Command {
-    void execute() throws InterruptOperationException, NotEnoughMoneyException;
+    void execute() throws InterruptOperationException;
 }
