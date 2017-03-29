@@ -12,6 +12,16 @@ import java.util.Locale;
 public class CashMachine {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
+
+//        CurrencyManipulator manipulator = null;
+//        String currencyCode = "RUR";
+//        manipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode);
+//        manipulator.addAmount(5000, 2);
+//        manipulator.addAmount(1000, 1);
+//        manipulator.addAmount(500, 3);
+//        manipulator.addAmount(100, 2);
+//        manipulator.addAmount(50, 3);
+
             Operation operation = null;
         try {
             do {

@@ -24,7 +24,6 @@ public class ConsoleHelper {
         try {
             s = reader.readLine();
             if (s.toLowerCase().equals("exit")) {
-                writeMessage("ВСЕГО ХОРОШЕГО!");
                 throw new InterruptOperationException();
             }
         } catch (IOException e) {
