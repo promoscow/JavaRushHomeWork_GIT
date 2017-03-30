@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  * Created by promoscow on 20.02.17.
  */
 public class ConsoleHelper {
-    private static ResourceBundle res = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "consolehelper_en");
+    private static ResourceBundle res = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "common_en");
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void writeMessage(String message) {
@@ -35,23 +35,23 @@ public class ConsoleHelper {
     }
 
     public static String askCurrencyCode() throws InterruptOperationException {
-        writeMessage(res.getString("enter.currency.code"));
+        writeMessage(res.getString("choose.currency.code"));
         String currencyCode = "";
         while (true) {
             currencyCode = readString();
             if (currencyCode.matches("^[a-zA-Z]{3}$")) break;
-            writeMessage(res.getString("wrong.currency.code"));
+            writeMessage(res.getString("invalid.data"));
         }
         return currencyCode.toUpperCase();
     }
 
     public static String[] getValidTwoDigits() throws InterruptOperationException {
-        writeMessage(res.getString("enter.money"));
+        writeMessage(res.getString("choose.denomination.and.count.format"));
         String enter = "";
         while (true) {
             enter = readString();
             if (enter.matches("\\d+ \\d+")) break;
-            writeMessage(res.getString("wrong.money"));
+            writeMessage(res.getString("invalid.data"));
         }
         return enter.split(" ");
     }
@@ -59,8 +59,12 @@ public class ConsoleHelper {
     public static Operation askOperation() throws InterruptOperationException {
         Operation operation = null;
         while (true) {
-            writeMessage(res.getString("enter.code"));
-            writeMessage(res.getString("codes"));
+            writeMessage(res.getString("choose.operation"));
+            writeMessage(String.format("%s (1) %s (2) %s (3) %s (4)",
+                    res.getString("operation.INFO"),
+                    res.getString("operation.DEPOSIT"),
+                    res.getString("operation.WITHDRAW"),
+                    res.getString("operation.EXIT")));
             try {
                 operation = Operation.getAllowableOperationByOrdinal(Integer.valueOf(readString()));
                 break;
@@ -72,6 +76,6 @@ public class ConsoleHelper {
     }
 
     public static void printExitMessage() {
-        ConsoleHelper.writeMessage(res.getString("bye"));
+        ConsoleHelper.writeMessage(res.getString("the.end"));
     }
 }

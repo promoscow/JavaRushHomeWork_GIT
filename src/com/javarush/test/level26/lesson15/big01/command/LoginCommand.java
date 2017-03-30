@@ -14,36 +14,36 @@ public class LoginCommand implements Command {
     private ResourceBundle res = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "login_en");
     @Override
     public void execute() throws InterruptOperationException {
+        ConsoleHelper.writeMessage(res.getString("before"));
 
         while (true) {
-            ConsoleHelper.writeMessage(res.getString("enter.cardnum"));
+            ConsoleHelper.writeMessage(res.getString("specify.data"));
             String cardNum = ConsoleHelper.readString();
-            ConsoleHelper.writeMessage(res.getString("enter.pin"));
             String enterPin = ConsoleHelper.readString();
             if (cardNum.length() != 12) {
-                ConsoleHelper.writeMessage(res.getString("wrong.cardnum"));
+                ConsoleHelper.writeMessage(res.getString("try.again.or.exit"));
                 continue;
             }
             try {
                 long checkNum = Long.parseLong(cardNum);
             } catch (NumberFormatException e) {
-                ConsoleHelper.writeMessage(res.getString("wrong.cardnum"));
+                ConsoleHelper.writeMessage(res.getString("try.again.or.exit"));
                 continue;
             }
             if (enterPin.length() != 4) {
-                ConsoleHelper.writeMessage(res.getString("wrong.pin"));
+                ConsoleHelper.writeMessage(res.getString("try.again.with.details"));
                 continue;
             }
             try {
                 int checkPin = Integer.parseInt(enterPin);
             } catch (NumberFormatException e) {
-                ConsoleHelper.writeMessage(res.getString("wrong.pin"));
+                ConsoleHelper.writeMessage(res.getString("try.again.with.details"));
                 continue;
             }
             if (validCreditCards.containsKey(cardNum) && validCreditCards.getString(cardNum).equals(enterPin)) {
-                ConsoleHelper.writeMessage(res.getString("data.correct"));
+                ConsoleHelper.writeMessage(String.format(res.getString("success.format"), cardNum));
                 break;
-            } else ConsoleHelper.writeMessage(res.getString("data.incorrect"));
+            } else ConsoleHelper.writeMessage(String.format(res.getString("not.verified.format"), cardNum));
         }
     }
 }

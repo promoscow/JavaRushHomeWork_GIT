@@ -16,16 +16,17 @@ class WithdrawCommand implements Command {
     private ResourceBundle res = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "withdraw_en");
     @Override
     public void execute() throws InterruptOperationException {
+        ConsoleHelper.writeMessage(res.getString("before"));
         String currencyCode = ConsoleHelper.askCurrencyCode();
         CurrencyManipulator manipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode);
         try {
             int amount = 0;
             while (true) {
-                ConsoleHelper.writeMessage(res.getString("enter.amount"));
+                ConsoleHelper.writeMessage(res.getString("specify.amount"));
                 try {
                     amount = Integer.parseInt(ConsoleHelper.readString());
                     if (!manipulator.isAmountAvailable(amount)) {
-                        ConsoleHelper.writeMessage(res.getString("no.money"));
+                        ConsoleHelper.writeMessage(res.getString("not.enough.money"));
                         continue;
                     }
                     Map<Integer, Integer> map = manipulator.withdrawAmount(amount);
@@ -35,15 +36,15 @@ class WithdrawCommand implements Command {
                     for (int i = 0; i < list.size(); i++) {
                         ConsoleHelper.writeMessage("\t" + list.get(i) + " - " + map.get(list.get(i)));
                     }
-                    ConsoleHelper.writeMessage(res.getString("operation.success"));
+                    ConsoleHelper.writeMessage(String.format(res.getString("success.format"), amount, currencyCode));
                     break;
 
                 } catch (NumberFormatException e) {
-                    ConsoleHelper.writeMessage(res.getString("enter.digit"));
+                    ConsoleHelper.writeMessage(res.getString("specify.not.empty.amount"));
                 }
             }
         } catch (NotEnoughMoneyException e) {
-            ConsoleHelper.writeMessage(res.getString("no.denominations"));
+            ConsoleHelper.writeMessage(res.getString("exact.amount.not.available"));
         }
     }
 }
