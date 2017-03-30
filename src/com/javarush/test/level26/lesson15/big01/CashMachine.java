@@ -30,7 +30,7 @@ public class CashMachine {
                 CommandExecutor.execute(operation);
             } while (operation != Operation.EXIT);
         } catch (InterruptOperationException e) {
-            ConsoleHelper.writeMessage("ВСЕГО ХОРОШЕГО.");
+            ConsoleHelper.printExitMessage();
         }
     }
 }

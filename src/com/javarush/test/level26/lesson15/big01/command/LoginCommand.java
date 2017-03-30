@@ -11,40 +11,39 @@ import java.util.ResourceBundle;
  */
 public class LoginCommand implements Command {
     private ResourceBundle validCreditCards = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "verifiedCards");
+    private ResourceBundle res = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "login_en");
     @Override
     public void execute() throws InterruptOperationException {
-        String number = "123456789012";
-        String pin = "1234";
 
         while (true) {
-            ConsoleHelper.writeMessage("ВВЕДИТЕ НОМЕР КАРТЫ (12 чисел).");
+            ConsoleHelper.writeMessage(res.getString("enter.cardnum"));
             String cardNum = ConsoleHelper.readString();
-            ConsoleHelper.writeMessage("ВВЕДИТЕ PIN.");
+            ConsoleHelper.writeMessage(res.getString("enter.pin"));
             String enterPin = ConsoleHelper.readString();
             if (cardNum.length() != 12) {
-                ConsoleHelper.writeMessage("НОМЕР КАРТЫ ДОЛЖЕН СОДЕРЖАТЬ 12 ЦИФР.");
+                ConsoleHelper.writeMessage(res.getString("wrong.cardnum"));
                 continue;
             }
             try {
                 long checkNum = Long.parseLong(cardNum);
             } catch (NumberFormatException e) {
-                ConsoleHelper.writeMessage("НОМЕР КАРТЫ ДОЛЖЕН СОДЕРЖАТЬ 12 ЦИФР.");
+                ConsoleHelper.writeMessage(res.getString("wrong.cardnum"));
                 continue;
             }
             if (enterPin.length() != 4) {
-                ConsoleHelper.writeMessage("PIN ДОЛЖЕН СОДЕРЖАТЬ 4 ЦИФРЫ.");
+                ConsoleHelper.writeMessage(res.getString("wrong.pin"));
                 continue;
             }
             try {
                 int checkPin = Integer.parseInt(enterPin);
             } catch (NumberFormatException e) {
-                ConsoleHelper.writeMessage("PIN ДОЛЖЕН СОДЕРЖАТЬ 4 ЦИФРЫ.");
+                ConsoleHelper.writeMessage(res.getString("wrong.pin"));
                 continue;
             }
             if (validCreditCards.containsKey(cardNum) && validCreditCards.getString(cardNum).equals(enterPin)) {
-                ConsoleHelper.writeMessage("ДАННЫЕ ВЕРНЫ.");
+                ConsoleHelper.writeMessage(res.getString("data.correct"));
                 break;
-            } else ConsoleHelper.writeMessage("ДАННЫЕ НЕ ВЕРНЫ. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
+            } else ConsoleHelper.writeMessage(res.getString("data.incorrect"));
         }
     }
 }

@@ -6,12 +6,13 @@ import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyExceptio
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ResourceBundle;
 
 /**
  * Created by promoscow on 20.02.17.
  */
 public class ConsoleHelper {
-
+    private static ResourceBundle res = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "consolehelper_en");
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void writeMessage(String message) {
@@ -34,23 +35,23 @@ public class ConsoleHelper {
     }
 
     public static String askCurrencyCode() throws InterruptOperationException {
-        writeMessage("ВВЕДИТЕ КОД ВАЛЮТЫ:");
+        writeMessage(res.getString("enter.currency.code"));
         String currencyCode = "";
         while (true) {
             currencyCode = readString();
             if (currencyCode.matches("^[a-zA-Z]{3}$")) break;
-            writeMessage("КОД ВАЛЮТЫ МОЖЕТ СОДЕРЖАТЬ 3 СИМВОЛА АНГЛИЙСКОГО АЛФАВИТА. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
+            writeMessage(res.getString("wrong.currency.code"));
         }
         return currencyCode.toUpperCase();
     }
 
     public static String[] getValidTwoDigits() throws InterruptOperationException {
-        writeMessage("ВВЕДИТЕ НОМИНАЛ И КОЛИЧЕСТВО БАНКНОТ (ЧЕРЕЗ ПРОБЕЛ):");
+        writeMessage(res.getString("enter.money"));
         String enter = "";
         while (true) {
             enter = readString();
             if (enter.matches("\\d+ \\d+")) break;
-            writeMessage("НЕКОРРЕКТНЫЙ ВВОД. ВВЕДИТЕ НОМИНАЛ И КОЛ-ВО ВАЛЮТ.");
+            writeMessage(res.getString("wrong.money"));
         }
         return enter.split(" ");
     }
@@ -58,15 +59,19 @@ public class ConsoleHelper {
     public static Operation askOperation() throws InterruptOperationException {
         Operation operation = null;
         while (true) {
-            writeMessage("ВВЕДИТЕ КОД ОПЕРАЦИИ.");
-            writeMessage("| INFO - 1 | DEPOSIT — 2 | WITHDRAW - 3 | EXIT - 4 |");
+            writeMessage(res.getString("enter.code"));
+            writeMessage(res.getString("codes"));
             try {
                 operation = Operation.getAllowableOperationByOrdinal(Integer.valueOf(readString()));
                 break;
             } catch (Exception e) {
-                writeMessage("ДАННЫЕ НЕ ВЕРНЫ. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
+                writeMessage(res.getString("wrong.input"));
             }
         }
         return operation;
+    }
+
+    public static void printExitMessage() {
+        ConsoleHelper.writeMessage(res.getString("bye"));
     }
 }
