@@ -1,12 +1,16 @@
 package com.javarush.test.level26.lesson15.big01.command;
 
+import com.javarush.test.level26.lesson15.big01.CashMachine;
 import com.javarush.test.level26.lesson15.big01.ConsoleHelper;
 import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationException;
+
+import java.util.ResourceBundle;
 
 /**
  * Created by promoscow on 30.03.17.
  */
 public class LoginCommand implements Command {
+    private ResourceBundle validCreditCards = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "verifiedCards");
     @Override
     public void execute() throws InterruptOperationException {
         String number = "123456789012";
@@ -37,7 +41,7 @@ public class LoginCommand implements Command {
                 ConsoleHelper.writeMessage("PIN ДОЛЖЕН СОДЕРЖАТЬ 4 ЦИФРЫ.");
                 continue;
             }
-            if (number.equals(cardNum) && pin.equals(enterPin)) {
+            if (validCreditCards.containsKey(cardNum) && validCreditCards.getString(cardNum).equals(enterPin)) {
                 ConsoleHelper.writeMessage("ДАННЫЕ ВЕРНЫ.");
                 break;
             } else ConsoleHelper.writeMessage("ДАННЫЕ НЕ ВЕРНЫ. ПОПРОБУЙТЕ ЕЩЁ РАЗ.");
