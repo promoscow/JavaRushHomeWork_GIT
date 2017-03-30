@@ -13,6 +13,7 @@ public final class CommandExecutor {
     private static Map<Operation, Command> commands = new HashMap<>();
 
     static {
+        commands.put(Operation.LOGIN, new LoginCommand());
         commands.put(Operation.DEPOSIT, new DepositCommand());
         commands.put(Operation.EXIT, new ExitCommand());
         commands.put(Operation.INFO, new InfoCommand());
