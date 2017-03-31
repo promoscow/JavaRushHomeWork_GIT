@@ -1,8 +1,10 @@
 package com.javarush.test.level28.lesson15.big01;
 
 import com.javarush.test.level28.lesson15.big01.model.Provider;
+import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by promoscow on 23.02.17.
@@ -20,5 +22,20 @@ public class Controller {
         return "Controller{" +
                 "providers=" + Arrays.toString(providers) +
                 '}';
+    }
+
+    public void scan() {
+        try {
+            List<Vacancy> list = null;
+            for (Provider provider : providers) {
+                List<Vacancy> vacOfProv = provider.getJavaVacancies("");
+                for (Vacancy vacancy : vacOfProv) {
+                    list.add(vacancy);
+                }
+            }
+            System.out.println(list.size());
+        } catch (NullPointerException e) {
+            System.out.println("0");
+        }
     }
 }
