@@ -28,14 +28,14 @@ public class Controller {
         try {
             List<Vacancy> list = null;
             for (Provider provider : providers) {
-                List<Vacancy> vacOfProv = provider.getJavaVacancies("Москва");
+                List<Vacancy> vacOfProv = provider.getJavaVacancies("Киев");
                 for (Vacancy vacancy : vacOfProv) {
                     list.add(vacancy);
                 }
             }
             System.out.println(list.size());
         } catch (NullPointerException e) {
-            System.out.println("0");
+//            System.out.println("0");
         }
     }
 }
