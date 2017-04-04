@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49e868cb-6c28-469e-9a04-9674b5bddb2b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/model.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java" afterPath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java" afterPath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/HtmlView.java" afterPath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/HtmlView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Условие задачи.txt" afterPath="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Условие задачи.txt" />
     </list>
     <ignored path="JavaRushHomeWork.iws" />
@@ -239,11 +241,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Aggregator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Aggregator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.2543641">
+              <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -253,7 +255,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Условие задачи.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -280,7 +282,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -292,11 +294,15 @@
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/HtmlView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
+                <element signature="e#458#459#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#672#673#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -324,12 +330,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44402984">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+              <folding>
+                <element signature="e#602#603#0" expanded="true" />
+                <element signature="e#644#645#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -403,17 +412,17 @@
         <option value="$PROJECT_DIR$/src/com/javarush/test/level30/lesson02/home01/Number.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/Strategy.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/Provider.java" />
-        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java" />
         <option value="$PROJECT_DIR$/google.html" />
         <option value="$PROJECT_DIR$/sample.html" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/vo/Vacancy.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/HHStrategy.java" />
-        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/View.java" />
-        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/HtmlView.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/model.java" />
-        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/Model.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Условие задачи.txt" />
+        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java" />
+        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/HtmlView.java" />
+        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/Model.java" />
+        <option value="$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java" />
       </list>
     </option>
   </component>
@@ -1619,7 +1628,7 @@
       <workItem from="1490875195546" duration="7000" />
       <workItem from="1490875315374" duration="17000" />
       <workItem from="1490875553387" duration="597000" />
-      <workItem from="1490877570232" duration="31665000" />
+      <workItem from="1490877570232" duration="32989000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1479768043343</created>
@@ -1843,11 +1852,17 @@
       <option name="project" value="LOCAL" />
       <updated>1491251943430</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="парсер 11 только скачал">
+      <created>1491252881275</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1491252881275</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1289259000" />
+    <option name="totallyTimeSpent" value="1290583000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1872,7 +1887,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4158654" sideWeight="0.73373497" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30829757" sideWeight="0.26626506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30829757" sideWeight="0.26626506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2645631" sideWeight="0.63846153" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1905,7 +1920,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="level20.lesson02.task02 +++" />
     <MESSAGE value="level20.lesson02.task03" />
     <MESSAGE value="Hippodrome" />
     <MESSAGE value="20-10-02+" />
@@ -1930,7 +1944,8 @@
     <MESSAGE value="парсер 5 сдано" />
     <MESSAGE value="парсер 6 сдано" />
     <MESSAGE value="парсер 9 сдано" />
-    <option name="LAST_COMMIT_MESSAGE" value="парсер 9 сдано" />
+    <MESSAGE value="парсер 11 только скачал" />
+    <option name="LAST_COMMIT_MESSAGE" value="парсер 11 только скачал" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -2413,14 +2428,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2442,11 +2449,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/view/HtmlView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2469,9 +2480,20 @@
     <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2479,15 +2501,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Условие задачи.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level28/lesson15/big01/Aggregator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44402984">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2543641">
+          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
           <folding />
         </state>
       </provider>
