@@ -19,10 +19,10 @@ public class Model {
         this.providers = providers;
     }
 
-    public void selectCity(String city) {
+    public void selectCity(String city, String vacancy) {
         List<Vacancy> list = new ArrayList<>();
         for (Provider provider : providers) {
-            list.addAll(provider.getJavaVacancies(city));
+            list.addAll(provider.getJavaVacancies(city, vacancy));
         }
         view.update(list);
     }

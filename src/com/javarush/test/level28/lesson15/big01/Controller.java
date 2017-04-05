@@ -12,43 +12,13 @@ import java.util.List;
  */
 public class Controller {
     private Model model;
-//    private Provider[] providers;
 
     public Controller(Model model) {
         if (model == null) throw new IllegalArgumentException();
         this.model = model;
     }
 
-    public void onCitySelect(String cityName) {
-        model.selectCity(cityName);
+    public void onCitySelect(String cityName, String vacancy) {
+        model.selectCity(cityName, vacancy);
     }
-
-    //    public Controller(Provider... providers) throws IllegalArgumentException {
-//        if (providers == null || providers.length == 0) throw new IllegalArgumentException();
-//        this.providers = providers;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Controller{" +
-//                "providers=" + Arrays.toString(providers) +
-//                '}';
-//    }
-
-
-
-//    public void scan() {
-//        try {
-//            List<Vacancy> list = null;
-//            for (Provider provider : providers) {
-//                List<Vacancy> vacOfProv = provider.getJavaVacancies("Киев");
-//                for (Vacancy vacancy : vacOfProv) {
-//                    list.add(vacancy);
-//                }
-//            }
-//            System.out.println(list.size());
-//        } catch (NullPointerException e) {
-////            System.out.println("0");
-//        }
-//    }
 }
